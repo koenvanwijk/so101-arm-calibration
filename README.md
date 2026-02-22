@@ -42,6 +42,26 @@ python3 scripts/calibrate_endstops.py \
   --visualize
 ```
 
+## Checker / watchdog
+
+Added: `scripts/checker_watch.py`
+
+It can monitor:
+- voltage (default register `62`)
+- torque enabled flag (default register `40`)
+- position sanity ranges (default register `56`)
+
+Example:
+
+```bash
+python3 scripts/checker_watch.py \
+  --port /dev/tty_white_follower_so101 \
+  --ids 1 2 3 4 5 6 \
+  --min-voltage 45 \
+  --expect-torque off \
+  --position-ranges "1:700-3300,2:900-3200,3:900-3100,4:900-3150,5:200-3900,6:1200-3200"
+```
+
 ## Scope
 
 This repo is arm/workflow specific.
@@ -49,6 +69,7 @@ This repo is arm/workflow specific.
 Notes:
 - `calibrate_via_controller.py` currently uses position-only stop detection.
 - For load-based stop detection + offset register writes, use the direct-serial script for now.
+- `checker_watch.py` currently reads serial directly; ideal end-state is routing it through a single bus-owner service.
 
 Generic reusable motor-control functionality remains in:
 - `../sts-scs-motor-controller`
