@@ -64,6 +64,21 @@ python3 scripts/checker_via_controller.py \
   --position-ranges "1:700-3300,2:900-3200,3:900-3100,4:900-3150,5:200-3900,6:1200-3200"
 ```
 
+## Gravity-hold compensation (prototype)
+
+Added:
+- `model/so101_bambot.urdf` (sourced from Bambot)
+- `scripts/hold_comp_from_model.py`
+
+This script computes conservative bias ticks for IDs 2/3/4 (shoulder/elbow/wrist_pitch)
+from current raw ticks using a URDF-informed planar approximation.
+
+Example:
+
+```bash
+python3 scripts/hold_comp_from_model.py --id2 1010 --id3 3088 --id4 2873
+```
+
 ## Scope
 
 This repo is arm/workflow specific.
