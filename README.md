@@ -44,17 +44,19 @@ python3 scripts/calibrate_endstops.py \
 
 ## Checker / watchdog
 
-Added: `scripts/checker_watch.py`
+Added:
+- `scripts/checker_watch.py` (direct serial)
+- `scripts/checker_via_controller.py` (recommended; single bus-owner model)
 
 It can monitor:
-- voltage (default register `62`)
-- torque enabled flag (default register `40`)
-- position sanity ranges (default register `56`)
+- voltage
+- torque enabled state
+- position sanity ranges
 
-Example:
+Example (controller-backed):
 
 ```bash
-python3 scripts/checker_watch.py \
+python3 scripts/checker_via_controller.py \
   --port /dev/tty_white_follower_so101 \
   --ids 1 2 3 4 5 6 \
   --min-voltage 45 \
