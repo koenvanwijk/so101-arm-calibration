@@ -12,6 +12,7 @@ It also includes a conservative safety/guard pipeline for controller-backed moti
 - `scripts/calibrate_endstops.py` — direct-serial, slow load-monitored endstop calibration
 - `scripts/calibrate_via_controller.py` — queue/controller-based calibration (shared bus-owner model)
 - `docs/endstop_calibration.md` — procedure and safety notes
+- `docs/guard_validation.md` — guard validation checklist
 
 ## Usage
 
